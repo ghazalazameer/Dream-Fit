@@ -230,9 +230,9 @@
   /* Responsive Media Queries */
 @media screen and (max-width: 768px) {
   #calorie-result {
-      width: auto; /* Allow the width to adjust based on content */
-      max-width: 90%; /* Limit maximum width for smaller screens */
-      margin: 0 auto; /* Center horizontally */
+      width: auto; 
+      max-width: 90%; 
+      margin: 0 auto; 
   }
 }
   
@@ -261,6 +261,7 @@
     background-size: cover;
     background-position: center;
     box-shadow: 0 0 4px #000000;
+
   }
   
   .slide table {
@@ -273,25 +274,20 @@
     border-collapse: collapse;
   }
   
-  .slide {
-    width: max-content; 
-  }
-  
-  
   .slide table,
   th,
   td {
     border: 1px solid #177ddc;
   }
-
+  
   #gaining-muscle {
     background-image: url("/static/img/bg.jpg");
   }
   
   #losing-weight {
     background-image: url("/static/img/losing-weight.jpg");
-   
-}
+  }
+  
   #building-strength{
     background-image: url("/static/img/building-strength.jpg");
   }
