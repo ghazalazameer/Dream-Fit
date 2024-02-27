@@ -126,6 +126,14 @@
     border-radius: 12px;
     color: #ffffff;
   }
+  /* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  form,
+  .list-box {
+      width: 95%; 
+      max-width: none; 
+  }
+}
 
   /* About */
   
@@ -174,13 +182,36 @@
   #about .btn{
     box-shadow: 0 0 8px #000000;
   }
+  /* Responsive Media Queries */
+  @media screen and (max-width: 768px) {
+    #about .container {
+      flex-direction: column;
+      padding: 0 0.5rem; 
+  }
+}
   
   /* BMI Calculator*/
   
   #bmi-calculator ul {
     padding-left: 2rem;
   }
+ /* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
   
+  #bmi-calculator ul {
+      padding-left: 1rem; 
+  }
+  
+  #bmi-result {
+    width: auto; 
+    max-width: 90%; 
+    margin: 0 auto; 
+  }
+}
   /* Caloric Needs */
   
   #calorie-form {
@@ -196,6 +227,14 @@
   #female {
     width: 10%;
   }
+  /* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  #calorie-result {
+      width: auto; /* Allow the width to adjust based on content */
+      max-width: 90%; /* Limit maximum width for smaller screens */
+      margin: 0 auto; /* Center horizontally */
+  }
+}
   
   /* Workout Planning */
   
@@ -234,20 +273,25 @@
     border-collapse: collapse;
   }
   
+  .slide {
+    width: max-content; 
+  }
+  
+  
   .slide table,
   th,
   td {
     border: 1px solid #177ddc;
   }
-  
+
   #gaining-muscle {
     background-image: url("/static/img/bg.jpg");
   }
   
   #losing-weight {
     background-image: url("/static/img/losing-weight.jpg");
-  }
-  
+   
+}
   #building-strength{
     background-image: url("/static/img/building-strength.jpg");
   }

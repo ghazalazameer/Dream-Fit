@@ -1,3 +1,41 @@
+const toggleBtn = document.getElementsByClassName("toggle-button")[0];
+const navBar = document.getElementsByClassName("navbar")[0];
+toggleBtn.addEventListener("click", () => {
+  navBar.classList.toggle("active");
+});
+
+$(function () {
+  $(".accordion")
+    .find(".accordion__title")
+    .click(function () {
+      $(this).toggleClass("active");
+      $(this).next().slideToggle("fast");
+      $(".accordion__content").not($(this).next()).slideUp("fast");
+      $(".accordion__title").not($(this)).removeClass("active");
+    });
+});
+
+const wrapper = document.querySelector(".wrapper");
+const indicators = [...document.querySelectorAll(".indicators button")];
+let currentTestimonial = 0;
+indicators.forEach((item, i) => {
+  item.addEventListener("click", () => {
+    indicators[currentTestimonial].classList.remove("active");
+    wrapper.style.marginLeft = `-${100 * i}%`;
+    item.classList.add("active");
+    currentTestimonial = i;
+  });
+});
+document.querySelectorAll(".image-container img").forEach((image) => {
+  image.onclick = () => {
+    document.querySelector(".popup-img").style.display = "block";
+    document.querySelector(".popup-img img").src = image.getAttribute("src");
+  };
+});
+
+document.querySelector(".popup-img span").onclick = () => {
+  document.querySelector(".popup-img").style.display = "none";
+};
 // Declaring elements:
 const bmiForm = document.getElementById("bmi-form");
 const bmiSubmit = document.getElementById("bmi-submit");
@@ -7,7 +45,6 @@ const showExercise = document.getElementById("show-exercise");
 const exerciseSelect = document.getElementById("exercise-select");
 const exercisePic = document.getElementById("exercise-pic");
 
-
 // BMI Calculator
 bmiSubmit.addEventListener("click", function (event) {
   const height = parseFloat(document.getElementById("bmi-height").value) / 100;
@@ -16,18 +53,18 @@ bmiSubmit.addEventListener("click", function (event) {
 
   if (!isNaN(result) && result > 0) {
     if (result < 18.5)
-      document.getElementById("bmi-result").innerHTML = "YOUR BMI = " + result.toFixed(1) + " (Underweight)";
+      document.getElementById("bmi-result").innerHTML =
+        "YOUR BMI = " + result.toFixed(1) + " (Underweight)";
     else if (result < 24.9)
-      document.getElementById("bmi-result").innerHTML = "YOUR BMI = " + result.toFixed(1) + " (Normal weight)";
+      document.getElementById("bmi-result").innerHTML =
+        "YOUR BMI = " + result.toFixed(1) + " (Normal weight)";
     else
-      document.getElementById("bmi-result").innerHTML = "YOUR BMI = " + result.toFixed(1) + " (Overweight)";
-  }
-  else {
+      document.getElementById("bmi-result").innerHTML =
+        "YOUR BMI = " + result.toFixed(1) + " (Overweight)";
+  } else {
     alert("Please enter a valid input!");
   }
 });
-
-
 
 // Calorie Calculator:
 calorieSubmit.addEventListener("click", function (event) {
@@ -43,11 +80,11 @@ calorieSubmit.addEventListener("click", function (event) {
   if (age <= 80 && age >= 15 && height > 0 && weight > 0) {
     // Male:
     if (gender[0].checked) {
-      bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     }
     //Female:
     else if (gender[1].checked) {
-      bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
     }
     // Gender unchecked:
     else {
@@ -62,20 +99,19 @@ calorieSubmit.addEventListener("click", function (event) {
     else if (activity == 5) need = bmr * 1.725;
     else need = bmr * 1.9;
 
-    document.getElementById("calorie-result").innerHTML = "YOUR CALORIE NEEDING = " + Math.round(need) + " cal/day";
+    document.getElementById("calorie-result").innerHTML =
+      "YOUR CALORIE NEEDING = " + Math.round(need) + " cal/day";
   }
   // Inputs are invalid:
-  else
-    alert("Please enter a valid input!");
+  else alert("Please enter a valid input!");
 });
-
-
 
 // Exercise Guide:
 showExercise.addEventListener("click", function (event) {
   const select = exerciseSelect.value;
-  if (select != "none"){
+  if (select != "none") {
     exercisePic.src = "static/exercises/" + select + ".svg";
-    exercisePic.style = "background: #EBEBEB; padding: 2rem; border-radius: 16px; box-shadow: 0 0 4px #000";
+    exercisePic.style =
+      "background: #EBEBEB; padding: 2rem; border-radius: 16px; box-shadow: 0 0 4px #000";
   }
 });
